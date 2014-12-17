@@ -1,7 +1,7 @@
 function createTable()
 {
-	var problemList = fetchData("ProblemList");
-	var teamList = fetchData("TeamList");
+	var problemList = fetchData(problemListLocation);
+	var teamList = fetchData(teamListLocation);
 	document.write("<tr id='header'>");
 	document.write("<td>");
 	document.write("</td>");

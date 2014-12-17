@@ -1,7 +1,7 @@
 function loadTable()
 {
-	var problemList = fetchData("ProblemList");
-	var teamList = fetchData("TeamList");
+	var problemList = fetchData(problemListLocation);
+	var teamList = fetchData(teamListLocation);
 	for (var i = 0; i < problemList.length; ++i)
 	{
 		$("#problem-" + i).html(problemList[i]["problemName"]);
