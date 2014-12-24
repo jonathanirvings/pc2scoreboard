@@ -1,0 +1,52 @@
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+#sb_body {
+  clear:both;
+  display:table;
+  width:100%;
+}
+
+#sidebar {
+  width:20%;
+  display:table-cell;
+}
+
+#scoreboard {
+  width:80%;
+  display:table-cell;
+}
+
+th {
+  background-color:grey;
+  font-family:arial;
+}
+
+.teamname {
+  text-align:left;
+}
+
+td {
+  background-color:white;
+  font-family:arial;
+  min-width:50px;
+  padding-top:5px;
+  padding-bottom: 5px;
+  border-left:0px solid black;
+  border-right:0px solid black;
+  border-top:1px solid black;
+}
+
+.team_problem {
+  text-align:center;
+}
+.num_solved {
+  text-align: center;
+}
+.penalty {
+  text-align: center;
+}
+
+

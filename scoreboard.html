@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="css/scoreboard.css"></link>
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css"></link>
+    <script src="libraries/js/jquery.js"></script>
+    <script src="libraries/js/jquery-ui.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+        <h1> ACM ICPC 2015 SG </h1>
+      </div>
+      <div id="sb_body">
+        <div id="sidebar">
+          <table>
+            <tr>
+              <th> Team </th>
+              <th> Score </th>
+            </tr>
+            <tr>
+              <td> ThanQ+ </td>
+              <td> 9 / 1123 </td>
+            </tr>
+            <tr>
+              <td> string.punctuation </td>
+              <td> 9 / 4123 </td>
+            </tr>
+          </table>
+          <button id = 'edit_button'> Edit </button>
+        </div>
+        <div id="scoreboard">
+          <table>
+            <tr>
+              <th> Team </th>
+              <th> Solved </th>
+              <th> Penalty </th>
+              <th> A </th>
+              <th> B </th>
+              <th> C </th>
+              <th> D </th>
+              <th> E </th>
+              <th> F </th>
+              <th> G </th>
+              <th> H </th>
+              <th> I </th>
+              <th> J </th>
+              <th> K </th>
+            </tr>
+            <tr>
+              <td class="team_name"> ThanQ+ <br> National University of Singapore</td>
+              <td class="num_solved"> 11 </td>
+              <td class="penalty"> 1123 </td>
+              <td class="team_problem"> 205<br>3 </td>
+              <td class="team_problem"> 205<br>3 </td>
+              <td class= "team_problem"> 205<br>3 </td>
+              <td class= "team_problem"> 205<br>3 </td>
+              <td class= "team_problem"> 205<br>3 </td>
+              <td class= "team_problem"> 205<br>3 </td>
+              <td class= "team_problem"> 205<br>3 </td>
+              <td class= "team_problem"> 205<br>3 </td>
+              <td class= "team_problem"> 205<br>3 </td>
+              <td class= "team_problem"> 205<br>3 </td>
+              <td class= "team_problem"> 205<br>3 </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div id="followed_dialog"> 
+        Add followed team here
+      </div>
+    </div>
+  </body>
+  <script>
+    $('#followed_dialog').hide();
+    $('#edit_button').click(function(){
+      $('#followed_dialog').dialog();
+    });
+  </script>
+</html>
