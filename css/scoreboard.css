@@ -42,6 +42,23 @@ td {
 .team_problem {
   text-align:center;
 }
+
+.pending_submission {
+  background-color : lightblue;
+}
+
+.no_submission {
+  background-color : red;
+}
+
+.first_yes_submission {
+  background-color : green;
+}
+
+.yes_submission {
+  background-color : lightgreen;
+}
+
 .num_solved {
   text-align: center;
 }
