@@ -45,6 +45,25 @@ Team.prototype.getNumberSolved = function() {
   return totalSolved;
 }
 
+Team.prototype.getLastSolved = function() {
+  var isSolved = {};
+  var lastSolved = 0;
+  for (var i = 0; i < this.submissions.length; ++i) {
+    submission = this.submissions[i];
+    if (!submission.problem in isSolved) {
+      isSolved[submission.problem] = false;
+    }
+    if (isSolved[submission.problem]) {
+      continue;
+    }
+    if (submission.verdict == yesSubmission) {
+      lastSolved = submission.time;
+      isSolved[submission.problem] = true;
+    }
+  }
+  return lastSolved;
+}
+
 Team.prototype.addSubmission = function(submission) {
   this.submissions.push(submission);
 }
