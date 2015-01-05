@@ -1,5 +1,5 @@
-function Problem {
-  this.problemName = "";
+function Problem(name) {
+  this.problemName = name;
   this.submissions = [];
 }
 

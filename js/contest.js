@@ -4,7 +4,36 @@ function Contest() {
   this.submissions = [];
 }
 
-Contest.prototype.update = function(jsonSubmissions) {
+Contest.prototype.update = function(runs, problems, teams) {
+  this.teams = [];
+  this.problems = [];
+  this.submissions = [];
+
+  for (var problem in problems) {
+    newProblem = new Problem(problem.problemName);
+    this.problems.push(newProblem);
+  }
+
+  for (var team in teams) {
+    newTeam = new Team(team.teamName);
+    this.teams.push(newTeam);
+  }
+
+  for (var run in runs) {
+    var team = this.getTeam(run.teamName);
+    var problem = this.getProblem(run.problemName);
+    
+    submission = new Submission(team, problem, run.time, run.judgement);
+    this.submissions.push(submission);
+  }
+}
+
+Contest.prototype.getProblem = function(problemName) {
+  for (var problem in this.problems) {
+    if (problem.problemName == problemName) {
+      return problem;
+    }
+  }
 }
 
 Contest.prototype.getTeam = function(teamID) {

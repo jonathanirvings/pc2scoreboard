@@ -1,5 +1,5 @@
-function Team() {
-  this.teamID = "";
+function Team(teamID) {
+  this.teamID = teamID;
   this.submissions = [];
 }
 
