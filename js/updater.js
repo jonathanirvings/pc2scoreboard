@@ -8,6 +8,7 @@ Updater.prototype.startRefresh = function() {
     var runListUrl = apiLocation + runListLocation;
     var problemListUrl = apiLocation + problemListLocation;
     var teamListUrl = apiLocation + teamListLocation;
+    var uiController = new UIController(this.contest);
 
     var runs, problems, teams;
 
@@ -26,6 +27,10 @@ Updater.prototype.startRefresh = function() {
     ).then(
       function() {
         self.contest.update(runs, problems, teams);
+      }
+    ).then(
+      function() {
+        uiController.update(self.contest);
       }
     )
   }

@@ -9,7 +9,7 @@ Team.prototype.getPenalty = function() {
   var isSolved = {};
   for (var i = 0; i < this.submissions.length; ++i) {
     submission = this.submissions[i];
-    if ((!submission.problem in penalty) || (!submission.problem in isSolved)) {
+    if ((!(submission.problem in penalty)) || (!(submission.problem in isSolved))) {
       penalty[submission.problem] = 0;
       isSolved[submission.problem] = false;
     }
@@ -19,7 +19,7 @@ Team.prototype.getPenalty = function() {
     if (submission.verdict == noSubmission) {
       penalty[submission.problem] += noSubmissionPenalty;
     } else if (submission.verdict == yesSubmission) {
-      totalPenalty += penalty[submission.problem] + submission.time;
+      totalPenalty += (penalty[submission.problem] + submission.time);
       isSolved[submission.problem] = true;
     }
   }
@@ -28,9 +28,9 @@ Team.prototype.getPenalty = function() {
 
 Team.prototype.getPenaltyForProblem = function(problem) {
   var penalty = 0;
-  for (var i = 0; i < this.submission.length; ++i) {
+  for (var i = 0; i < this.submissions.length; ++i) {
     submission = this.submissions[i];
-    if (submissions.problem.problemName == problem.problemName) {
+    if (submission.problem.problemName == problem.problemName) {
       if (submission.verdict == noSubmission) {
         penalty += noSubmissionPenalty;
       } else if (submission.verdict == yesSubmission) {
@@ -43,9 +43,9 @@ Team.prototype.getPenaltyForProblem = function(problem) {
 
 Team.prototype.getAttemptForProblem = function(problem) {
   var attempt = 0;
-  for (var i = 0; i < this.submission.length; ++i) {
+  for (var i = 0; i < this.submissions.length; ++i) {
     submission = this.submissions[i];
-    if (submissions.problem.problemName == problem.problemName) {
+    if (submission.problem.problemName == problem.problemName) {
       ++attempt;
       if (submission.verdict == yesSubmission) {
         return attempt;
@@ -60,7 +60,7 @@ Team.prototype.getNumberSolved = function() {
   var isSolved = {};
   for (var i = 0; i < this.submissions.length; ++i) {
     submission = this.submissions[i];
-    if (!submission.problem in isSolved) {
+    if (!(submission.problem in isSolved)) {
       isSolved[submission.problem] = false;
     }
     if (isSolved[submission.problem]) {
@@ -79,7 +79,7 @@ Team.prototype.getLastSolved = function() {
   var lastSolved = 0;
   for (var i = 0; i < this.submissions.length; ++i) {
     submission = this.submissions[i];
-    if (!submission.problem in isSolved) {
+    if (!(submission.problem in isSolved)) {
       isSolved[submission.problem] = false;
     }
     if (isSolved[submission.problem]) {

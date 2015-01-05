@@ -25,7 +25,7 @@ Problem.prototype.getNumberAccepted = function() {
   var solvedBy = {};
   for (var i = 0; i < this.submissions.length; ++i) {
     var submission = this.submissions[i];
-    if (!submission.team in solvedBy) {
+    if (!(submission.team in solvedBy)) {
       solvedBy[submission.team] = false;
     }
     if (solvedBy[submission.team]) {

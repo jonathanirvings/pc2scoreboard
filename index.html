@@ -12,8 +12,8 @@
   <script src="js/contest.js"></script>
   <script src="js/updater.js"></script>
   <script src="js/fetchData.js"></script>
-  <script src="js/uiController.js"></script>
   <script src="js/tableController.js"></script>
+  <script src="js/uiController.js"></script>
   <title>Scoreboard</title>
 </head>
 <body>
@@ -47,7 +47,7 @@
               <th> Solved </th>
               <th> Penalty </th>
             </tr>
-            <tr>
+            <!-- <tr>
               <td class="rank"> 1 </td>
               <td class="team_name"> ThanQ+ <br> National University of Singapore</td>
               <td class="num_solved"> 11 </td>
@@ -63,7 +63,7 @@
               <td class= "team_problem no_submission"> 205<br>3 </td>
               <td class= "team_problem yes_submission"> 205<br>3 </td>
               <td class= "team_problem pending_submission"> 205<br>3 </td>
-            </tr>
+            </tr> -->
           </table>
         </div>
       </div>
@@ -88,12 +88,13 @@
   </script>
   <script>
     var contest = new Contest();
+    //var tableController = new tableController(contest);
     var updater = new Updater(contest); 
-    //updater.startRefresh();        
-    var tableController = new tableController(contest);
-    tableController.addTeam(new Team(100));
+    updater.startRefresh();        
+    /*tableController.addTeam(new Team(100));
     tableController.addTeam(new Team(200));
     tableController.addTeam(new Team(300));
+    tableController.updateTeamPosition(new Team(300));*/
     
   </script>
 </body>
