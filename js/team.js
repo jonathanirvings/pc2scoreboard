@@ -26,14 +26,12 @@ Team.prototype.getPenalty = function() {
   return totalPenalty;
 }
 
-Team.prototype.getPenaltyForProblem = function(problem) {
+Team.prototype.getTimeForProblem = function(problem) {
   var penalty = 0;
   for (var i = 0; i < this.submissions.length; ++i) {
     submission = this.submissions[i];
     if (submission.problem.problemName == problem.problemName) {
-      if (submission.verdict == noSubmission) {
-        penalty += noSubmissionPenalty;
-      } else if (submission.verdict == yesSubmission) {
+      if (submission.verdict == yesSubmission) {
         return penalty + submission.time;
       }
     }
@@ -95,6 +93,27 @@ Team.prototype.getLastSolved = function() {
 
 Team.prototype.addSubmission = function(submission) {
   this.submissions.push(submission);
+}
+
+Team.prototype.problemStatus = function(problem) {
+  var submission;
+  var lastSubmission = null;
+  for (var i = 0; i < this.submissions.length; ++i) {
+    submission = this.submissions[i];
+    if (submission.problem.problemName == problem.problemName) {
+      if (submission.verdict == yesSubmission) {
+        return yesSubmission;
+      }
+      lastSubmission = this.submissions[i];
+    }
+  }
+  if (lastSubmission == null) {
+    return blankSubmission;
+  } else if (lastSubmission.verdict == noSubmission) {
+    return noSubmission;
+  } else {
+    return pendingSubmission;
+  }
 }
 
 

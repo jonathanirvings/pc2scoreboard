@@ -30,7 +30,7 @@ TableController.prototype.addTeam = function(team) {
       var newCell = newRow.insertCell(i + 4);
       newCell.setAttribute("id", "team-" + team.teamID + "-problem-" + problem.problemName);
       newCell.setAttribute("class", "problem-" + problem.problemName);
-      newCell.innerHTML = team.getPenaltyForProblem(problem) + "<br />" + team.getAttemptForProblem(problem);
+      newCell.innerHTML = team.getTimeForProblem(problem) + "<br />" + team.getAttemptForProblem(problem);
     }
     
     return newRow;
@@ -78,8 +78,19 @@ TableController.prototype.updateTeamPenalty = function(team) {
   rowRef.getElementsByClassName("penalty")[0].innerHTML = team.getPenalty();
   for (var i = 0; i < this.contest.problems.length; ++i) {
     var problem = this.contest.problems[i];
-    rowRef.getElementsByClassName("problem-" + problem.problemName)[0].innerHTML = 
-        team.getPenaltyForProblem(problem) + "<br />" + team.getAttemptForProblem(problem);
+    var cell = rowRef.getElementsByClassName("problem-" + problem.problemName)[0];
+    cell.innerHTML = team.getTimeForProblem(problem) + "<br />" + team.getAttemptForProblem(problem);
+    $(cell).removeClass('no_submission');
+    $(cell).removeClass('yes_submission');
+    $(cell).removeClass('pending_submission');
+    var status = team.problemStatus(problem);
+      if (status == noSubmission) {
+        cell.className = cell.className + " no_submission";
+      } else if (status == yesSubmission) {
+        cell.className = cell.className + " yes_submission";
+      } else if (status == pendingSubmission) {
+        cell.className = cell.className + " pending_submission";
+      }
   }
 
 }
