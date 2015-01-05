@@ -9,31 +9,35 @@ Contest.prototype.update = function(runs, problems, teams) {
   this.problems = [];
   this.submissions = [];
 
-  for (var problem in problems) {
+  for (var i = 0; i < problems.length; i++) {
+    var problem = problems[i];
     newProblem = new Problem(problem.problemName);
     this.problems.push(newProblem);
   }
 
-  for (var team in teams) {
+  for (var i = 0; i < teams.length; i++) {
+    var team = teams[i];
     newTeam = new Team(team.teamName);
     this.teams.push(newTeam);
   }
 
-  for (var run in runs) {
+  for (var i = 0; i < runs.length; i++) {
+    var run = runs[i];
     var team = this.getTeam(run.teamName);
     var problem = this.getProblem(run.problemName);
-    
     submission = new Submission(team, problem, run.time, run.judgement);
     this.submissions.push(submission);
   }
 }
 
 Contest.prototype.getProblem = function(problemName) {
-  for (var problem in this.problems) {
+  for (var i = 0; i < this.problems.length; i++) {
+    var problem = this.problems[i];
     if (problem.problemName == problemName) {
       return problem;
     }
   }
+  return "HAHA";
 }
 
 Contest.prototype.getTeam = function(teamID) {

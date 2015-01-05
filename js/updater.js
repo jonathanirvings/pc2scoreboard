@@ -3,12 +3,11 @@ function Updater(contest) {
 }
 
 Updater.prototype.startRefresh = function() {
-  setTimeout(function() {
-    console.log("TEST");
+  var self = this;
+  function refresh() {
     var runListUrl = apiLocation + runListLocation;
     var problemListUrl = apiLocation + problemListLocation;
     var teamListUrl = apiLocation + teamListLocation;
-    console.log(runListUrl);
 
     var runs, problems, teams;
 
@@ -26,8 +25,11 @@ Updater.prototype.startRefresh = function() {
       })
     ).then(
       function() {
-        this.contest.update(runs, problems, teams);
+        self.contest.update(runs, problems, teams);
       }
     )
-  }, 0);
+  }
+
+  refresh();
+  setInterval(refresh, 20000);
 }
