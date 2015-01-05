@@ -9,18 +9,18 @@ Team.prototype.getPenalty = function() {
   var isSolved = {};
   for (var i = 0; i < this.submissions.length; ++i) {
     submission = this.submissions[i];
-    if ((!(submission.problem in penalty)) || (!(submission.problem in isSolved))) {
-      penalty[submission.problem] = 0;
-      isSolved[submission.problem] = false;
+    if ((!(submission.problem.problemName in penalty)) || (!(submission.problem.problemName in isSolved))) {
+      penalty[submission.problem.problemName] = 0;
+      isSolved[submission.problem.problemName] = false;
     }
-    if (isSolved[submission.problem]) {
+    if (isSolved[submission.problem.problemName]) {
       continue;
     }
     if (submission.verdict == noSubmission) {
-      penalty[submission.problem] += noSubmissionPenalty;
+      penalty[submission.problem.problemName] += noSubmissionPenalty;
     } else if (submission.verdict == yesSubmission) {
-      totalPenalty += (penalty[submission.problem] + submission.time);
-      isSolved[submission.problem] = true;
+      totalPenalty += (penalty[submission.problem.problemName] + submission.time);
+      isSolved[submission.problem.problemName] = true;
     }
   }
   return totalPenalty;
@@ -58,15 +58,15 @@ Team.prototype.getNumberSolved = function() {
   var isSolved = {};
   for (var i = 0; i < this.submissions.length; ++i) {
     submission = this.submissions[i];
-    if (!(submission.problem in isSolved)) {
-      isSolved[submission.problem] = false;
+    if (!(submission.problem.problemName in isSolved)) {
+      isSolved[submission.problem.problemName] = false;
     }
-    if (isSolved[submission.problem]) {
+    if (isSolved[submission.problem.problemName]) {
       continue;
     }
     if (submission.verdict == yesSubmission) {
       ++totalSolved;
-      isSolved[submission.problem] = true;
+      isSolved[submission.problem.problemName] = true;
     }
   }
   return totalSolved;
@@ -77,15 +77,15 @@ Team.prototype.getLastSolved = function() {
   var lastSolved = 0;
   for (var i = 0; i < this.submissions.length; ++i) {
     submission = this.submissions[i];
-    if (!(submission.problem in isSolved)) {
-      isSolved[submission.problem] = false;
+    if (!(submission.problem.problemName in isSolved)) {
+      isSolved[submission.problem.problemName] = false;
     }
-    if (isSolved[submission.problem]) {
+    if (isSolved[submission.problem.problemName]) {
       continue;
     }
     if (submission.verdict == yesSubmission) {
       lastSolved = submission.time;
-      isSolved[submission.problem] = true;
+      isSolved[submission.problem.problemName] = true;
     }
   }
   return lastSolved;

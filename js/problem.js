@@ -25,15 +25,15 @@ Problem.prototype.getNumberAccepted = function() {
   var solvedBy = {};
   for (var i = 0; i < this.submissions.length; ++i) {
     var submission = this.submissions[i];
-    if (!(submission.team in solvedBy)) {
-      solvedBy[submission.team] = false;
+    if (!(submission.team.teamID in solvedBy)) {
+      solvedBy[submission.team.teamID] = false;
     }
-    if (solvedBy[submission.team]) {
+    if (solvedBy[submission.team.teamID]) {
       continue;
     }
     if (submission.verdict == yesSubmission) {
       ++numberOfAccepted;
-      solvedBy[submission.team] = true;
+      solvedBy[submission.team.teamID] = true;
     }
   }
   return numberOfAccepted;
