@@ -18,7 +18,7 @@ Contest.prototype.getTeam = function(teamID) {
 
 Contest.prototype.getRank = function(teamID) {
   team = this.getTeam(teamID);
-  int rank = 1;
+  var rank = 1;
   for (var i = 0; i < this.teams.length; ++i) {
     if (this.teams[i].getNumberSolved() > team.getNumberSolved()) {
       ++rank;
