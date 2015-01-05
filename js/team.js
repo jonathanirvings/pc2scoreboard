@@ -26,6 +26,35 @@ Team.prototype.getPenalty = function() {
   return totalPenalty;
 }
 
+Team.prototype.getPenaltyForProblem = function(problem) {
+  var penalty = 0;
+  for (var i = 0; i < this.submission.length; ++i) {
+    submission = this.submissions[i];
+    if (submissions.problem.problemName == problem.problemName) {
+      if (submission.verdict == noSubmission) {
+        penalty += noSubmissionPenalty;
+      } else if (submission.verdict == yesSubmission) {
+        return penalty + submission.time;
+      }
+    }
+  }
+  return penalty;
+}
+
+Team.prototype.getAttemptForProblem = function(problem) {
+  var attempt = 0;
+  for (var i = 0; i < this.submission.length; ++i) {
+    submission = this.submissions[i];
+    if (submissions.problem.problemName == problem.problemName) {
+      ++attempt;
+      if (submission.verdict == yesSubmission) {
+        return attempt;
+      }
+    }
+  }
+  return attempt;
+}
+
 Team.prototype.getNumberSolved = function() {
   var totalSolved = 0;
   var isSolved = {};

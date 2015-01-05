@@ -1,23 +1,100 @@
 <html>
 <head>
-	<script src="libraries/js/jquery.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/scoreboard.css"></link>
+  <link rel="stylesheet" type="text/css" href="css/jquery-ui.css"></link>
+  <script src="libraries/js/jquery.js"></script>
+  <script src="libraries/js/jquery-ui.js"></script>
   <script src="libraries/js/jquery.quicksand.js"></script>
-	<script src="js/constant.js"></script>
+  <script src="js/constant.js"></script>
   <script src="js/submission.js"></script>
   <script src="js/team.js"></script>
   <script src="js/problem.js"></script>
   <script src="js/contest.js"></script>
   <script src="js/updater.js"></script>
-	<script src="js/fetchData.js"></script>
-	<title>Scoreboard</title>
+  <script src="js/fetchData.js"></script>
+  <script src="js/uiController.js"></script>
+  <script src="js/tableController.js"></script>
+  <title>Scoreboard</title>
 </head>
 <body>
-	<table id="scoreboard" border="1">
-	</table>
+      <div id="container">
+      <div id="header">
+        <h1> ACM ICPC 2015 SG </h1>
+      </div>
+      <div id="sb_body">
+        <div id="sidebar">
+          <table>
+            <tr>
+              <th> Team </th>
+              <th> Score </th>
+            </tr>
+            <tr>
+              <td> ThanQ+ </td>
+              <td> 9 / 1123 </td>
+            </tr>
+            <tr>
+              <td> string.punctuation </td>
+              <td> 9 / 4123 </td>
+            </tr>
+          </table>
+          <button id = 'edit_button'> Edit </button>
+        </div>
+        <div id="scoreboard">
+          <table id="scoreboardtable">
+            <tr id="tableheader">
+              <th> Rank </th>
+              <th> Team </th>
+              <th> Solved </th>
+              <th> Penalty </th>
+            </tr>
+            <tr>
+              <td class="rank"> 1 </td>
+              <td class="team_name"> ThanQ+ <br> National University of Singapore</td>
+              <td class="num_solved"> 11 </td>
+              <td class="penalty"> 1123 </td>
+              <td class="team_problem"> 205<br>3 </td>
+              <td class="team_problem"> 205<br>3 </td>
+              <td class= "team_problem"> 205<br>3 </td>
+              <td class= "team_problem"> 205<br>3 </td>
+              <td class= "team_problem"> 205<br>3 </td>
+              <td class= "team_problem"> 205<br>3 </td>
+              <td class= "team_problem"> 205<br>3 </td>
+              <td class= "team_problem first_yes_submission"> 205<br>3 </td>
+              <td class= "team_problem no_submission"> 205<br>3 </td>
+              <td class= "team_problem yes_submission"> 205<br>3 </td>
+              <td class= "team_problem pending_submission"> 205<br>3 </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div id="followed_dialog"> 
+        <ul>
+          <li>
+            National University of Singapore
+            <ul>
+              <li> ThanQ+ </li>
+              <li> Team Rocket </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+  <script>
+    $('#followed_dialog').hide();
+    $('#edit_button').click(function(){
+      $('#followed_dialog').dialog();
+    });
+  </script>
   <script>
     var contest = new Contest();
     var updater = new Updater(contest); 
-    updater.startRefresh();        
+    //updater.startRefresh();        
+    var tableController = new tableController(contest);
+    tableController.addTeam(new Team(100));
+    tableController.addTeam(new Team(200));
+    tableController.addTeam(new Team(300));
+    
   </script>
 </body>
 </html>
